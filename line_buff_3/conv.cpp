@@ -80,18 +80,30 @@ void convolution(int image[IMAGE_HIGHT][IMAGE_WIDTH],int output[IMAGE_HIGHT - 2]
  int line_buffer_1[IMAGE_WIDTH];
  int line_buffer_2[IMAGE_WIDTH];
 
-  init_line_buffer(image, line_buffer_0, line_buffer_1, line_buffer_2);
-  for( int i = 2 ; i < IMAGE_HIGHT; i++ ) { 
+ // init_line_buffer(image, line_buffer_0, line_buffer_1, line_buffer_2);
+  for( int i = 0 ; i < IMAGE_HIGHT; i++ ) { 
     for( int j = 0 ; j < IMAGE_WIDTH; j++ ) { 
       line_buffer_0[j] = line_buffer_1[j];
       line_buffer_1[j] = line_buffer_2[j];
       line_buffer_2[j] = image[i][j];
     }   
-  init_window_buffer( image, window_buffer, line_buffer_0, line_buffer_1, line_buffer_2);
+		// initial window buffer
+				window_buffer[0][0] = 0;
+        window_buffer[1][0] = 0;
+        window_buffer[2][0] = 0;
+        window_buffer[0][1] = line_buffer_0[0];
+        window_buffer[1][1] = line_buffer_1[0];
+        window_buffer[2][1] = line_buffer_2[0];
+        window_buffer[0][2] = line_buffer_0[1];
+        window_buffer[1][2] = line_buffer_1[1];
+        window_buffer[2][2] = line_buffer_2[1];
+
     print_line_buffer( line_buffer_0);
     print_line_buffer( line_buffer_1);
     print_line_buffer( line_buffer_2);
     printf("\n");
+ 
+ // shift window to right
       for( int b = 0; b < IMAGE_WIDTH - 2  ; b ++) {
         for( int n = 0 ; n < 3; n++) {
           window_buffer[n][0] = window_buffer[n][1];
@@ -107,7 +119,17 @@ void convolution(int image[IMAGE_HIGHT][IMAGE_WIDTH],int output[IMAGE_HIGHT - 2]
           }
         }
 				print_window_buffer(window_buffer);
-				output[i-2][b] = process(kernel, window_buffer);
+
+// convolution caculate
+				if( i >= 2 ){ 
+    int sum = 0;
+    for (int m = 0; m < KERNEL_SIZE; ++m) {
+        for (int n = 0; n < KERNEL_SIZE; ++n) {
+            sum += window_buffer[m][n] * kernel[m][n];
+        }
+    }
+				output[i-2][b] = sum;
+				}
       }   
 }
 		print_output(output);
