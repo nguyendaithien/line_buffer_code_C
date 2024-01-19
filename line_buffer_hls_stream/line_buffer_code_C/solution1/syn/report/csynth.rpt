@@ -1,0 +1,147 @@
+
+
+================================================================
+== Synthesis Summary Report of 'filter3x3_orig'
+================================================================
++ General Information: 
+    * Date:           Wed Jan 17 18:03:03 2024
+    * Version:        2021.2 (Build 3367213 on Tue Oct 19 02:47:39 MDT 2021)
+    * Project:        line_buffer_code_C
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: virtexuplus
+    * Target device:  xcvu9p-flga2104-2-i
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+------------+------------+-----+
+    |         Modules        | Issue|      | Latency | Latency | Iteration|         | Trip |          |      |    |            |            |     |
+    |         & Loops        | Type | Slack| (cycles)|   (ns)  |  Latency | Interval| Count| Pipelined| BRAM | DSP|     FF     |     LUT    | URAM|
+    +------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+------------+------------+-----+
+    |+ filter3x3_orig        |     -|  3.25|       70|  466.200|         -|       71|     -|        no|     -|   -|  1657 (~0%)|  1349 (~0%)|    -|
+    | + convolution_int_3_s  |     -|  3.25|       67|  446.220|         -|       67|     -|        no|     -|   -|  1652 (~0%)|  1312 (~0%)|    -|
+    |  o Push_pixel          |    II|  4.86|       64|  426.240|         8|        8|     8|       yes|     -|   -|           -|           -|    -|
+    +------------------------+------+------+---------+---------+----------+---------+------+----------+------+----+------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* AXIS
++-----------+---------------+-------+--------+--------+
+| Interface | Register Mode | TDATA | TREADY | TVALID |
++-----------+---------------+-------+--------+--------+
+| image_r   | both          | 32    | 1      | 1      |
+| output_r  | both          | 32    | 1      | 1      |
++-----------+---------------+-------+--------+--------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------------------------------+
+| Interface | Type       | Ports                             |
++-----------+------------+-----------------------------------+
+| ap_clk    | clock      | ap_clk                            |
+| ap_rst_n  | reset      | ap_rst_n                          |
+| ap_ctrl   | ap_ctrl_hs | ap_done ap_idle ap_ready ap_start |
++-----------+------------+-----------------------------------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+-----------------+
+| Argument | Direction | Datatype        |
++----------+-----------+-----------------+
+| image    | in        | stream<int, 0>& |
+| output   | out       | stream<int, 0>& |
++----------+-----------+-----------------+
+
+* SW-to-HW Mapping
++----------+--------------+-----------+
+| Argument | HW Interface | HW Type   |
++----------+--------------+-----------+
+| image    | image_r      | interface |
+| output   | output_r     | interface |
++----------+--------------+-----------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++--------------------------+-----+--------+-------------+-----+--------+---------+
+| Name                     | DSP | Pragma | Variable    | Op  | Impl   | Latency |
++--------------------------+-----+--------+-------------+-----+--------+---------+
+| + filter3x3_orig         | 0   |        |             |     |        |         |
+|  + convolution_int_3_s   | 0   |        |             |     |        |         |
+|    i_2_fu_363_p2         | -   |        | i_2         | add | fabric | 0       |
+|    add_ln65_fu_385_p2    | -   |        | add_ln65    | add | fabric | 0       |
+|    add_ln65_1_fu_391_p2  | -   |        | add_ln65_1  | add | tadder | 0       |
+|    add_ln65_2_fu_396_p2  | -   |        | add_ln65_2  | add | tadder | 0       |
+|    add_ln65_3_fu_401_p2  | -   |        | add_ln65_3  | add | tadder | 0       |
+|    sum_fu_406_p2         | -   |        | sum         | add | tadder | 0       |
+|    add_ln65_5_fu_413_p2  | -   |        | add_ln65_5  | add | fabric | 0       |
+|    add_ln65_6_fu_419_p2  | -   |        | add_ln65_6  | add | tadder | 0       |
+|    add_ln65_7_fu_424_p2  | -   |        | add_ln65_7  | add | tadder | 0       |
+|    add_ln65_8_fu_429_p2  | -   |        | add_ln65_8  | add | tadder | 0       |
+|    sum_12_fu_434_p2      | -   |        | sum_12      | add | tadder | 0       |
+|    add_ln65_10_fu_441_p2 | -   |        | add_ln65_10 | add | fabric | 0       |
+|    add_ln65_11_fu_447_p2 | -   |        | add_ln65_11 | add | tadder | 0       |
+|    add_ln65_12_fu_452_p2 | -   |        | add_ln65_12 | add | tadder | 0       |
+|    add_ln65_13_fu_456_p2 | -   |        | add_ln65_13 | add | tadder | 0       |
+|    sum_13_fu_461_p2      | -   |        | sum_13      | add | tadder | 0       |
+|    add_ln65_15_fu_468_p2 | -   |        | add_ln65_15 | add | fabric | 0       |
+|    add_ln65_16_fu_474_p2 | -   |        | add_ln65_16 | add | tadder | 0       |
+|    add_ln65_17_fu_479_p2 | -   |        | add_ln65_17 | add | tadder | 0       |
+|    add_ln65_18_fu_483_p2 | -   |        | add_ln65_18 | add | tadder | 0       |
+|    sum_14_fu_488_p2      | -   |        | sum_14      | add | tadder | 0       |
+|    add_ln65_20_fu_495_p2 | -   |        | add_ln65_20 | add | fabric | 0       |
+|    add_ln65_21_fu_501_p2 | -   |        | add_ln65_21 | add | tadder | 0       |
+|    add_ln65_22_fu_506_p2 | -   |        | add_ln65_22 | add | tadder | 0       |
+|    add_ln65_23_fu_510_p2 | -   |        | add_ln65_23 | add | tadder | 0       |
+|    sum_15_fu_515_p2      | -   |        | sum_15      | add | tadder | 0       |
+|    add_ln65_25_fu_522_p2 | -   |        | add_ln65_25 | add | fabric | 0       |
+|    add_ln65_26_fu_528_p2 | -   |        | add_ln65_26 | add | tadder | 0       |
+|    add_ln65_27_fu_533_p2 | -   |        | add_ln65_27 | add | tadder | 0       |
+|    add_ln65_28_fu_537_p2 | -   |        | add_ln65_28 | add | tadder | 0       |
+|    sum_16_fu_542_p2      | -   |        | sum_16      | add | tadder | 0       |
++--------------------------+-----+--------+-------------+-----+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
+  No bind storage info in design
+
+================================================================
+== User Pragma Report
+================================================================
+* Pragmas with Warnings
++-----------------+--------------------------------+------------------------------------+----------------------------------------------------------------------------------+
+| Type            | Options                        | Location                           | Messages                                                                         |
++-----------------+--------------------------------+------------------------------------+----------------------------------------------------------------------------------+
+| array_partition | variable=kernel dim=1 complete | conv.cpp:15 in convolution, kernel | Array_Partition/Array_Reshape pragma is ignored, because variable is scalar type |
++-----------------+--------------------------------+------------------------------------+----------------------------------------------------------------------------------+
+
+* Valid Pragma Syntax
++-----------------+---------------------------------------+-------------------------------------------+
+| Type            | Options                               | Location                                  |
++-----------------+---------------------------------------+-------------------------------------------+
+| array_partition | variable=line_buffer_0 dim=1 complete | conv.cpp:12 in convolution, line_buffer_0 |
+| array_partition | variable=line_buffer_1 dim=1 complete | conv.cpp:13 in convolution, line_buffer_1 |
+| array_partition | variable=line_buffer_2 dim=1 complete | conv.cpp:14 in convolution, line_buffer_2 |
+| dependence      | variable=line_buffer_0 inter false    | conv.cpp:19 in convolution, line_buffer_0 |
+| dependence      | variable=line_buffer_1 inter false    | conv.cpp:20 in convolution, line_buffer_1 |
+| dependence      | variable=line_buffer_2 inter false    | conv.cpp:21 in convolution, line_buffer_2 |
+| pipeline        |                                       | conv.cpp:22 in convolution                |
+| dependence      | variable=line_buffer_0 inter false    | conv.cpp:41 in convolution, line_buffer_0 |
+| dependence      | variable=line_buffer_1 inter false    | conv.cpp:42 in convolution, line_buffer_1 |
+| dependence      | variable=line_buffer_2 inter false    | conv.cpp:43 in convolution, line_buffer_2 |
+| pipeline        |                                       | conv.cpp:44 in convolution                |
+| unroll          |                                       | conv.cpp:63 in convolution                |
+| interface       | axis port = image                     | conv.cpp:75 in filter3x3_orig             |
+| interface       | axis port = output                    | conv.cpp:76 in filter3x3_orig             |
+| inline          |                                       | conv.cpp:77 in filter3x3_orig             |
++-----------------+---------------------------------------+-------------------------------------------+
+
+
