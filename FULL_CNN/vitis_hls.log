@@ -1,0 +1,85 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2021.2 (64-bit)
+  **** SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+  **** IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source /tools/Xilinx/Vitis_HLS/2021.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/tools/Xilinx/Vitis_HLS/2021.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'edabk' on host 'edabk-HP-280-Pro-G8-Microtower-PC' (Linux_x86_64 version 5.15.0-91-generic) on Tue Jan 23 05:43:17 +07 2024
+INFO: [HLS 200-10] On os Ubuntu 20.04.6 LTS
+INFO: [HLS 200-10] In directory '/home/edabk/cu_cai_2k1/line_buffer_code_C/line_buffer_hls_stream'
+Sourcing Tcl script 'run_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project -reset line_buffer_code_C 
+INFO: [HLS 200-10] Opening and resetting project '/home/edabk/cu_cai_2k1/line_buffer_code_C/line_buffer_hls_stream/line_buffer_code_C'.
+WARNING: [HLS 200-40] No /home/edabk/cu_cai_2k1/line_buffer_code_C/line_buffer_hls_stream/line_buffer_code_C/solution1/solution1.aps file found.
+INFO: [HLS 200-1510] Running: add_files conv.cpp 
+INFO: [HLS 200-10] Adding design file 'conv.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb test.cpp 
+INFO: [HLS 200-10] Adding test bench file 'test.cpp' to the project
+INFO: [HLS 200-1510] Running: set_top filter3x3_orig 
+INFO: [HLS 200-1510] Running: open_solution -reset solution1 
+INFO: [HLS 200-10] Creating and opening solution '/home/edabk/cu_cai_2k1/line_buffer_code_C/line_buffer_hls_stream/line_buffer_code_C/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+WARNING: [HLS 200-40] No /home/edabk/cu_cai_2k1/line_buffer_code_C/line_buffer_hls_stream/line_buffer_code_C/solution1/solution1.aps file found.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2021.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1510] Running: create_clock -period 6.66 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 6.66ns.
+INFO: [HLS 200-1510] Running: csim_design 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../test.cpp in debug mode
+   Compiling ../../../../conv.cpp in debug mode
+   Generating csim.exe
+0  0  0  0  0  0  0  0  0  0  
+0  0  0  0  0  0  0  0  0  0  
+0  0  0  0  0  0  0  0  0  0  
+0  0  0  0  0  0  0  0  0  0  
+0  0  0  0  0  0  0  0  0  0  
+0  1  2  3  4  5  6  7  8  0  
+0  0  0  0  0  0  0  0  0  0  
+0  1  2  3  4  5  6  7  8  0  
+0  9  10  11  12  13  14  15  16  0  
+0  1  2  3  4  5  6  7  8  0  
+0  9  10  11  12  13  14  15  16  0  
+0  17  18  19  20  21  22  23  24  0  
+0  9  10  11  12  13  14  15  16  0  
+0  17  18  19  20  21  22  23  24  0  
+0  25  26  27  28  29  30  31  32  0  
+0  17  18  19  20  21  22  23  24  0  
+0  25  26  27  28  29  30  31  32  0  
+0  33  34  35  36  37  38  39  40  0  
+0  25  26  27  28  29  30  31  32  0  
+0  33  34  35  36  37  38  39  40  0  
+0  41  42  43  44  45  46  47  48  0  
+0  33  34  35  36  37  38  39  40  0  
+0  41  42  43  44  45  46  47  48  0  
+0  49  50  51  52  53  54  55  56  0  
+0  41  42  43  44  45  46  47  48  0  
+0  49  50  51  52  53  54  55  56  0  
+0  57  58  59  60  61  62  63  64  0  
+0  49  50  51  52  53  54  55  56  0  
+0  57  58  59  60  61  62  63  64  0  
+0  0  0  0  0  0  0  0  0  0  
+ 12 24 28 32 36 40 44 22 30 60 66 72 78 84 90 45 54 108 114 120 126 132 138 69 78 156 162 168 174 180 186 93 102 204 210 216 222 228 234 117 126 252 258 264 270 276 282 141 150 300 306 312 318 324 330 165 108 216 220 224 228 232 236 118INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 2.52 seconds. CPU system time: 0.28 seconds. Elapsed time: 1.73 seconds; current allocated memory: -937.109 MB.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 206.867 MB.
+INFO: [HLS 200-10] Analyzing design file 'conv.cpp' ... 
+ERROR: [HLS 207-3771] use of undeclared identifier 'cout' (conv.cpp:13:4)
+ERROR: [HLS 207-3771] use of undeclared identifier 'cout' (conv.cpp:16:2)
+WARNING: [HLS 207-5558] Array_Partition/Array_Reshape pragma is ignored, because variable is scalar type  (conv.cpp:38:38)
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 0.42 seconds. CPU system time: 0.07 seconds. Elapsed time: 0.5 seconds; current allocated memory: 1.277 MB.
+ 
+    while executing
+"source run_hls.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 [list source $arg] "
+
+INFO: [HLS 200-112] Total CPU user time: 4.74 seconds. Total CPU system time: 0.74 seconds. Total elapsed time: 3.66 seconds; peak allocated memory: 208.160 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Tue Jan 23 05:43:21 2024...
