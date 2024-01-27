@@ -1,0 +1,49 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2021.2 (64-bit)
+  **** SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+  **** IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source /tools/Xilinx/Vitis_HLS/2021.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/tools/Xilinx/Vitis_HLS/2021.2/bin/unwrapped/lnx64.o/vitis_hls'
+INFO: [HLS 200-10] For user 'edabk' on host 'edabk-HP-280-Pro-G8-Microtower-PC' (Linux_x86_64 version 5.15.0-92-generic) on Sat Jan 27 09:27:38 +07 2024
+INFO: [HLS 200-10] On os Ubuntu 20.04.6 LTS
+INFO: [HLS 200-10] In directory '/home/edabk/cu_cai_2k1/line_buffer_code_C/line_buffer_hls_stream/test_encoder'
+Sourcing Tcl script 'run_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project -reset line_buffer_code_C 
+INFO: [HLS 200-10] Opening and resetting project '/home/edabk/cu_cai_2k1/line_buffer_code_C/line_buffer_hls_stream/test_encoder/line_buffer_code_C'.
+WARNING: [HLS 200-40] No /home/edabk/cu_cai_2k1/line_buffer_code_C/line_buffer_hls_stream/test_encoder/line_buffer_code_C/solution1/solution1.aps file found.
+INFO: [HLS 200-1510] Running: add_files model.cpp 
+INFO: [HLS 200-10] Adding design file 'model.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb test.cpp 
+INFO: [HLS 200-10] Adding test bench file 'test.cpp' to the project
+INFO: [HLS 200-1510] Running: set_top layer_1 
+INFO: [HLS 200-1510] Running: open_solution -reset solution1 
+INFO: [HLS 200-10] Creating and opening solution '/home/edabk/cu_cai_2k1/line_buffer_code_C/line_buffer_hls_stream/test_encoder/line_buffer_code_C/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+WARNING: [HLS 200-40] No /home/edabk/cu_cai_2k1/line_buffer_code_C/line_buffer_hls_stream/test_encoder/line_buffer_code_C/solution1/solution1.aps file found.
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v=2021.2;t=hls+guidance;d=200-1505.html
+INFO: [HLS 200-1510] Running: set_part xcvu9p-flga2104-2-i 
+INFO: [HLS 200-1611] Setting target device to 'xcvu9p-flga2104-2-i'
+INFO: [HLS 200-1510] Running: create_clock -period 6.66 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 6.66ns.
+INFO: [HLS 200-1510] Running: csim_design 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../test.cpp in debug mode
+   Compiling ../../../../model.cpp in debug mode
+   Generating csim.exe
+@E Simulation failed: SIGSEGV.
+ERROR: [SIM 211-100] CSim failed with errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 1.86 seconds. CPU system time: 0.26 seconds. Elapsed time: 1.19 seconds; current allocated memory: -937.109 MB.
+4
+    while executing
+"source run_hls.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 [list source $arg] "
+
+INFO: [HLS 200-112] Total CPU user time: 3.5 seconds. Total CPU system time: 0.65 seconds. Total elapsed time: 2.53 seconds; peak allocated memory: 220.711 MB.
+INFO: [Common 17-206] Exiting vitis_hls at Sat Jan 27 09:27:40 2024...
